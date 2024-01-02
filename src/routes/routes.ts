@@ -5,7 +5,7 @@ const routes = Router();
 routes.use("/equipment", equipmentRouter);
 
 routes.get("/", (req, res) => {
-  res.send("<a href='/api/equipment/'>hey</a>");
+  res.send("<a href='/api/equipment/'>Click for all equipment</a>");
 });
 
 // export the route
