@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import needed libraries
 const express = require("express");
 const bodyParser = require("body-parser");
+const routes_1 = require("./src/routes/routes");
 // get express application
 const app = express();
 // body parser middleware
@@ -14,6 +15,4 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);
 });
-app.get("/", (req, res) => {
-    res.send("test");
-});
+app.use("/api", routes_1.default);

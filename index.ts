@@ -1,6 +1,7 @@
 // import needed libraries
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import routes from "./src/routes/routes";
 // get express application
 const app = express();
 // body parser middleware
@@ -13,6 +14,4 @@ app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}`);
 });
 
-app.get("/", (req, res) => {
-  res.send("test");
-});
+app.use("/api", routes);
