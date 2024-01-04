@@ -1,4 +1,4 @@
-export interface rentedUnits {
+export interface RentedUnits {
   customerId: number;
   equipment: object[];
   location: string;
