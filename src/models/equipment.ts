@@ -3,4 +3,5 @@ export interface Equipment {
   type: string;
   available: boolean;
   monthly_value: string;
+  rentalID: string;
 }
