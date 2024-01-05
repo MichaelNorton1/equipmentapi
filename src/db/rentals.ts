@@ -17,4 +17,24 @@ const selectAll = (): Promise<RentedUnits[]> => {
   });
 };
 
-export default { selectAll };
+const addToRental = (update: { rentalID: string; serial_num: string }) => {
+  return new Promise((resolve, reject) => {
+    const query = `UPDATE equipment SET rentalID = ? WHERE serial_num = ?`;
+
+    connection.getConnection((err: QueryError, conn: PoolConnection) => {
+      conn.query(query, [update.rentalID, update.serial_num], (err, result) => {
+        conn.release();
+        if (err) {
+          console.log(err);
+          return reject(err);
+        } else {
+          return resolve(result);
+        }
+      });
+
+      if (err) console.log(err);
+    });
+  });
+};
+
+export default { selectAll, addToRental };
