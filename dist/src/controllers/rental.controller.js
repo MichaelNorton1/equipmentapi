@@ -17,4 +17,20 @@ const getRentedUnits = (req, res) => {
         });
     });
 };
-exports.default = { getRentedUnits };
+const updateRental = (req, res) => {
+    rentals_1.default
+        .addToRental(req.body)
+        .then((data) => {
+        res.status(200).send({
+            message: "OK",
+            result: data,
+        });
+    })
+        .catch((err) => {
+        res.status(500).send({
+            message: "DATABASE ERROR",
+            error: err.code,
+        });
+    });
+};
+exports.default = { getRentedUnits, updateRental };

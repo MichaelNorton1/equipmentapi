@@ -20,7 +20,7 @@ const selectAll = (): Promise<Equipment[]> => {
 
 const addEquipment = (machine: Equipment) => {
   const addQuery = `INSERT INTO equipment (serial_num,type,available,monthly_value,rentalID) VALUES(?,?,?,?,?)`;
-  console.log(addQuery);
+
   return new Promise((resolve, reject) => {
     connection.getConnection((err: QueryError, conn: PoolConnection) => {
       conn.query(
