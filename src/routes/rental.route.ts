@@ -5,7 +5,9 @@ const rentalRouter = Router();
 // specifies the endpoint and the method to call
 rentalRouter.get("/", rentalController.getRentedUnits);
 
-rentalRouter.put("/add", rentalController.updateRental);
+rentalRouter.put("/add", rentalController.addToRental);
+
+rentalRouter.post("/addrental", rentalController.addRental);
 
 // export the router
 export default rentalRouter;

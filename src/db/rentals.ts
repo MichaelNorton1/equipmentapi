@@ -37,4 +37,35 @@ const addToRental = (update: { rentalID: string; serial_num: string }) => {
   });
 };
 
-export default { selectAll, addToRental };
+const add = (rental: RentedUnits) => {
+  return new Promise((resolve, reject) => {
+    const query = `INSERT INTO rentals (rentalID,customerID,location,dateStart,dateEnd,notes) VALUES(?,?,?,?,?,?)`;
+
+    connection.getConnection((err: QueryError, conn: PoolConnection) => {
+      conn.query(
+        query,
+        [
+          rental.rentalID,
+          rental.customerID,
+          rental.location,
+          rental.dateStarted,
+          rental.expextEndDate,
+          rental.notes,
+        ],
+        (err, result) => {
+          conn.release();
+          if (err) {
+            console.log(err);
+            return reject(err);
+          } else {
+            return resolve(result);
+          }
+        }
+      );
+
+      if (err) console.log(err);
+    });
+  });
+};
+
+export default { selectAll, addToRental, add };

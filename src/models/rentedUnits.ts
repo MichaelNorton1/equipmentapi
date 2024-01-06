@@ -1,6 +1,6 @@
 export interface RentedUnits {
-  customerId: number;
-  rentalID: string;
+  customerID: string;
+  rentalID: number;
   location: string;
   dateStarted: Date;
   expextEndDate: Date;
