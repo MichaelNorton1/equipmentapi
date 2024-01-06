@@ -39,7 +39,7 @@ const addToRental = (update: { rentalID: string; serial_num: string }) => {
 
 const add = (rental: RentedUnits) => {
   return new Promise((resolve, reject) => {
-    const query = `INSERT INTO rentals (rentalID,customerID,location,dateStart,dateEnd,notes) VALUES(?,?,?,?,?,?)`;
+    const query = `INSERT INTO rentals (rentalID,customerID,location,dateStart,dateEnd,notes,active) VALUES(?,?,?,?,?,?,?)`;
 
     connection.getConnection((err: QueryError, conn: PoolConnection) => {
       conn.query(
@@ -51,6 +51,7 @@ const add = (rental: RentedUnits) => {
           rental.dateStarted,
           rental.expextEndDate,
           rental.notes,
+          rental.active,
         ],
         (err, result) => {
           conn.release();
@@ -70,7 +71,7 @@ const add = (rental: RentedUnits) => {
 
 const changeDetails = (rental: RentedUnits) => {
   return new Promise((resolve, reject) => {
-    const query = `UPDATE rentals SET location = ?,dateStart = ? , dateEnd = ? ,notes = ?  WHERE rentalID = ?`;
+    const query = `UPDATE rentals SET location = ?,dateStart = ? , dateEnd = ? ,notes = ?, active=?  WHERE rentalID = ?`;
 
     connection.getConnection((err: QueryError, conn: PoolConnection) => {
       conn.query(
@@ -80,6 +81,7 @@ const changeDetails = (rental: RentedUnits) => {
           rental.dateStarted,
           rental.expextEndDate,
           rental.notes,
+          rental.active,
           rental.rentalID,
         ],
         (err, result) => {

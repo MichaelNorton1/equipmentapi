@@ -5,4 +5,5 @@ export interface RentedUnits {
   dateStarted: Date;
   expextEndDate: Date;
   notes: string;
+  active: boolean;
 }
