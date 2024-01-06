@@ -49,4 +49,20 @@ const addRental = (req, res) => {
         });
     });
 };
-exports.default = { getRentedUnits, addToRental, addRental };
+const changeRental = (req, res) => {
+    rentals_1.default
+        .changeDetails(req.body)
+        .then((data) => {
+        res.status(200).send({
+            message: "OK",
+            result: data,
+        });
+    })
+        .catch((err) => {
+        res.status(500).send({
+            message: "DATABASE ERROR",
+            error: err.code,
+        });
+    });
+};
+exports.default = { getRentedUnits, addToRental, addRental, changeRental };

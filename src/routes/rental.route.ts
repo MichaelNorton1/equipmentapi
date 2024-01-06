@@ -9,5 +9,7 @@ rentalRouter.put("/add", rentalController.addToRental);
 
 rentalRouter.post("/addrental", rentalController.addRental);
 
+rentalRouter.put("/changerental", rentalController.changeRental);
+
 // export the router
 export default rentalRouter;

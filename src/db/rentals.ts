@@ -68,4 +68,34 @@ const add = (rental: RentedUnits) => {
   });
 };
 
-export default { selectAll, addToRental, add };
+const changeDetails = (rental: RentedUnits) => {
+  return new Promise((resolve, reject) => {
+    const query = `UPDATE rentals SET location = ?,dateStart = ? , dateEnd = ? ,notes = ?  WHERE rentalID = ?`;
+
+    connection.getConnection((err: QueryError, conn: PoolConnection) => {
+      conn.query(
+        query,
+        [
+          rental.location,
+          rental.dateStarted,
+          rental.expextEndDate,
+          rental.notes,
+          rental.rentalID,
+        ],
+        (err, result) => {
+          conn.release();
+          if (err) {
+            console.log(err);
+            return reject(err);
+          } else {
+            return resolve(result);
+          }
+        }
+      );
+
+      if (err) console.log(err);
+    });
+  });
+};
+
+export default { selectAll, addToRental, add, changeDetails };
