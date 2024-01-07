@@ -71,7 +71,7 @@ const add = (rental: RentedUnits) => {
 
 const changeDetails = (rental: RentedUnits) => {
   return new Promise((resolve, reject) => {
-    const query = `UPDATE rentals SET location = ?,dateStart = ? , dateEnd = ? ,notes = ?, active=?  WHERE rentalID = ?`;
+    const query = `UPDATE rentals SET location = ? , dateStart = ? , dateEnd = ? ,notes = ?, active=?  WHERE rentalID = ?`;
 
     connection.getConnection((err: QueryError, conn: PoolConnection) => {
       conn.query(

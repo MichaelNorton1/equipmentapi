@@ -5,5 +5,7 @@ const equipmentRouter = Router();
 equipmentRouter.get("/", equipmentController.getAllequip);
 
 equipmentRouter.post("/add", equipmentController.addEquipment);
+
+equipmentRouter.put("/update", equipmentController.updateEquipment);
 // export the router
 export default equipmentRouter;
