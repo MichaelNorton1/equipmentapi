@@ -34,4 +34,21 @@ const addEquipment = (req, res) => {
         });
     });
 };
-exports.default = { getAllequip, addEquipment };
+const updateEquipment = (req, res) => {
+    equipment_1.default
+        .updateEquipment(req.body)
+        .then((data) => {
+        res.status(200).send({
+            message: "OK",
+            result: data,
+        });
+    })
+        .catch((err) => {
+        console.log(err);
+        res.status(500).send({
+            message: "DATABASE ERROR",
+            error: err.code,
+        });
+    });
+};
+exports.default = { getAllequip, addEquipment, updateEquipment };
