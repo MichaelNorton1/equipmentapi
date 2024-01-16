@@ -6,4 +6,5 @@ export interface RentedUnits {
   expextEndDate: Date;
   notes: string;
   active: boolean;
+  customerName: string;
 }

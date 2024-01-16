@@ -52,6 +52,7 @@ const add = (rental: RentedUnits) => {
           rental.expextEndDate,
           rental.notes,
           rental.active,
+          rental.customerName,
         ],
         (err, result) => {
           conn.release();
@@ -83,6 +84,7 @@ const changeDetails = (rental: RentedUnits) => {
           rental.notes,
           rental.active,
           rental.rentalID,
+          rental.customerName,
         ],
         (err, result) => {
           conn.release();
